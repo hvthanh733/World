@@ -9,6 +9,7 @@ body {
 
 .controlers{
     position: relative;
+    display: flex;
 }
 
 .controlers i {

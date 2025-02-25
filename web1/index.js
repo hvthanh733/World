@@ -125,12 +125,16 @@ emGroup.position.set(0, 0, 50); // Di chuyển mặt trăng sang bên phải
 
 
 
-document.addEventListener("click", function() {
+document.getElementById("playIcon").addEventListener("click", function() {
   let video = document.getElementById("myVideo");
-  video.muted = false;
-  video.play();
+  
+  if (video.paused) {
+    video.muted = false;
+    video.play();
+  } else {
+    video.pause();
+  }
 });
-
 
 
 //-----------------------------------------------------  
@@ -176,7 +180,7 @@ function animateEmFINAL() {
 }
 
 // Chạy video
-video.play();
+// video.play();
 
 // Chạy animation
 animateEmFINAL();
@@ -451,30 +455,30 @@ scene.add(ambientLight);
 //---------------------- 4 button -----------------
 
 // Lưu vị trí ban đầu của camera
-const initialCameraPosition = camera.position.clone();
-const initialTarget = new THREE.Vector3(0, 0, 0); // Trái đất ở trung tâm
+// const initialCameraPosition = camera.position.clone();
+// const initialTarget = new THREE.Vector3(0, 0, 0); // Trái đất ở trung tâm
 
 // Điều khiển zoom với hiệu ứng mượt
-function setupZoomControls() {
-  document.getElementById("zoomIn").addEventListener("click", () => {
-    gsap.to(camera.position, {
-      z: initialCameraPosition.z - 2, // Zoom gần hơn
-      duration: 1, // Thời gian zoom (giây)
-      ease: "power2.out", // Hiệu ứng easing (mềm mại dần)
+// function setupZoomControls() {
+//   document.getElementById("zoomIn").addEventListener("click", () => {
+//     gsap.to(camera.position, {
+//       z: initialCameraPosition.z - 2, // Zoom gần hơn
+//       duration: 1, // Thời gian zoom (giây)
+//       ease: "power2.out", // Hiệu ứng easing (mềm mại dần)
       
-      onUpdate: () => {
-        camera.lookAt(initialTarget); // Cập nhật hướng nhìn liên tục
-      },
+//       onUpdate: () => {
+//         camera.lookAt(initialTarget); // Cập nhật hướng nhìn liên tục
+//       },
 
-      onComplete: () => {
-        controls.target.copy(initialTarget); // Đảm bảo OrbitControls cũng cập nhật
-        controls.update();
-      }
-    });
-  });
-}
+//       onComplete: () => {
+//         controls.target.copy(initialTarget); // Đảm bảo OrbitControls cũng cập nhật
+//         controls.update();
+//       }
+//     });
+//   });
+// }
 
-setupZoomControls(); // Gọi hàm để gán sự kiện click
+// setupZoomControls(); // Gọi hàm để gán sự kiện click
 
 
 
