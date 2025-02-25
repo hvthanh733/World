@@ -125,7 +125,11 @@ emGroup.position.set(0, 0, 50); // Di chuyển mặt trăng sang bên phải
 
 
 
-
+document.addEventListener("click", function() {
+  let video = document.getElementById("myVideo");
+  video.muted = false;
+  video.play();
+});
 
 
 
